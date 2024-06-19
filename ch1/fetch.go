@@ -16,7 +16,7 @@ func main() {
 			os.Exit(1)
 		}
 
-		body, err := io.ReadAll(resp.Body)
+		_, err = io.Copy(os.Stdout, resp.Body)
 		resp.Body.Close()
 
 		if err != nil {
@@ -24,6 +24,6 @@ func main() {
 			os.Exit(1)
 		}
 
-		fmt.Printf("%s", body)
+		os.Exit(0)
 	}
 }
