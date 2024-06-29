@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-	n, err := strconv.Atoi(os.Args[1])
+	var n uint64
+
+	n, err := strconv.ParseUint(os.Args[1], 10, 64)
 
 	if err != nil {
 		fmt.Println("Error %v", err)
@@ -40,13 +42,13 @@ func main() {
 		os.Exit(0)
 	}
 
-	n_2 := 0
-	n_1 := 1
-	var result = 0
-	for i := 2; i <= n; i++ {
+	n_2 := uint64(0)
+	n_1 := uint64(1)
+	var result uint64 = 0
+	for i := uint64(2); i <= n; i++ {
 		result = n_2 + n_1
 		n_2, n_1 = n_1, result
 	}
 
-	fmt.Printf("Result = %d\n", result)
+	fmt.Println("Result = ", result)
 }
